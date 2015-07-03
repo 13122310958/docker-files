@@ -1,0 +1,102 @@
+Docker使用系列一
+
+安装参考!!!
+http://docs.docker.com/installation/centos/
+—————
+
+其它弯路：
+
+－－－－－
+
+下载
+
+源：https://fedoraproject.org/wiki/EPEL
+
+https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+
+http://blog.csdn.net/smallfish1983/article/details/40833597
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+yum --enablerepo=elrepo-kernel install kernel-lt -y
+vi /etc/grub.conf 修改默认的启动内核，新安装的内核一般在第一个，这里把default = 1 改为 default = 0 就好了。
+
+reboot
+
+http://d-prototype.com/archives/290
+更新 docker-io
+http://rpmfind.net/linux/rpm2html/search.php?query=epel&submit=Search+...&system=&arch=
+
+
+
+ 我们把镜像源改为了阿里云的，方便后续的操作。
+
+执行这个命令就把源地址改为阿里的：
+
+curl https://git.oschina.net/feedao/Docker_shell/raw/start/ali-centos.sh | sh
+第一安装Docker：
+
+yum -y install docker-io
+第二 启动Docker：
+
+service docker start
+第三安装制作CentOS镜像的工具：
+
+yum -y install febootstrap
+第四 制作CentOS镜像文件centos6-image目录
+
+febootstrap -i bash -i wget -i yum -i iputils -i iproute -i man -i vim-minimal -i openssh-server -i openssh-clients centos6 centos6-image http://mirrors.aliyun.com/centos/6/os/x86_64/
+第五制作Docker镜像，镜像名字是centos6-base，  最后的点是必须要的
+
+cd centos6-image && tar -c .|docker import - centos6-base
+第六制作可以ssh登陆的Docker镜像，名字是centos6-ssh
+
+docker build -t centos6-ssh https://git.oschina.net/feedao/Docker_shell/raw/start/Dockerfile
+
+经过前面的六个步骤，一个可以登陆的本地docker镜像就制作好了。
+
+用户名是：root，密码是：123456
+
+体验步骤：
+
+创建容器：
+
+docker run -d -p 127.0.0.1:33301:22 centos6-ssh
+ssh登陆容器：
+
+ssh root@127.0.0.1 -p 33301
+输入密码后就可以开始折腾了。
+
+
+
+成功！！！
+
+
+
+——
+
+私有云用法
+
+http://blog.csdn.net/smallfish1983/article/details/38555827
+
+—
+
+网络
+
+http://blog.csdn.net/smallfish1983/article/details/38820441
+
+－－－－－
+
+
+
+http://wiki.centos.org/Cloud/Docker
+
+http://dockone.io/article/323
+
+－－－－－－－
+
+各种项目
+
+https://docs.docker.com/
+
+————
+
+
