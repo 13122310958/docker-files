@@ -1,0 +1,6 @@
+bugzilla:
+  image: dklawren/docker-bugzilla
+  ports:
+    - "18080:80"
+    - "12222:22"
+    - "15900:5900"

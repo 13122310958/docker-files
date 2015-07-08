@@ -1,0 +1,32 @@
+gitlab:
+  image: sameersbn/gitlab:7.12.1
+  links:
+    - redis:redisio
+    - postgresql:postgresql
+  ports:
+    - "10080:80"
+    - "10022:22"
+  environment:
+    - TZ=Asia/Kolkata
+    - SMTP_ENABLED=true
+    - SMTP_DOMAIN=eric.liu.com
+    - SMTP_HOST=smtp.eric.liu.com
+    - SMTP_PORT=25
+    - SMTP_USER=eric.liu@eric.liu
+    - SMTP_PASS=password
+    - SMTP_STARTTLS=true
+    - SMTP_AUTHENTICATION=login
+    - GITLAB_TIMEZONE=Shanghai
+    - GITLAB_HOST=localhost
+    - GITLAB_PORT=10080
+    - GITLAB_SSH_PORT=10022
+    - GITLAB_EMAIL=eric.liu@eric.com
+    - GITLAB_EMAIL_REPLY_TO=noreply@example.com
+    - GITLAB_BACKUPS=daily
+    - GITLAB_BACKUP_TIME=01:00
+  volumes:
+    - /srv/docker/gitlab/gitlab:/home/git/data
+redis:
+  image: sameersbn/redis:latest
+  volumes:
+    - /srv/docker/gitlab/redis:/var/lib/redis

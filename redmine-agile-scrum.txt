@@ -1,0 +1,19 @@
+
+https://redmine.ociotec.com/projects/redmine-plugin-scrum
+
+使用方法：
+1.后台增加一个 custom field ,对于issue的。类型为 num , 名字叫 story points.
+2.在 trackers中， 点击 summary ，打勾生成的 story points 选项。
+效果：在 spring board 中，会以这个值为计算 points.
+3.1.在plugin的setting 中。指定 story points 用这个值来计算。
+3.2. backlog items choose all
+3.3. tasks choose all. 
+3.4. field to use with error : choose parent task and story points.
+3.5. "sprint board" tab: task status for sprint board: choose all
+3.6.  PBI status: choose “new “
+	then “save”! 
+3.7. go to public a new issue in “sprint board”
+3.8. open the new issue , add a “subtask” and set the status in “processing” , than you can see it display in the “processing” tab .
+
+ok! enjoy it.
+

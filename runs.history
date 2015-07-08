@@ -1,0 +1,50 @@
+
+docker run -d -p 127.0.0.1:33301:22 centos6-ssh
+docker run -d -p 33302:22 -p 33380:80 -p 33383:443 --name testapache centos6-ssh
+
+把上面修改的内容。做为一个镜像。里面需要做上面的
+docker commit testapache eric-c6-httpd-ssh
+
+
+ docker run -d -p 33402:22 -p 33480:80 -p 33483:443 --name eric2 eric-c6-httpd-ssh
+
+ docker run -d -p 33502:22 -p 33580:80 -p 33583:443 -v /home/tools:/home/tools
+ --name hudson eric-c6-httpd-ssh2
+
+docker run -d -p 33602:22 -p 33680:80 -p 33683:443 -v /home/tools:/home/tools --name redmine centos6-ssh
+
+docker run -d -p 33702:22 -p 33780:80 -p 33783:443 -v /home/tools:/home/tools --name tomcat centos6-java
+http://116.236.190.211:33780     ok!
+
+#hudson
+docker run -d -p 33802:22 -p 33880:80 -v /home/tools:/home/tools --name jenkins centos6-java-tomcat7
+
+#git
+docker run -d -p 31602:22 -p 31680:80 -p 9418:9418 -v /home/tools:/home/tools --name git-web-server eric-centos6/git-web-server
+
+docker run -d -p 33802:22 -p 33880:80 -p 33883:443 -v /home/tools:/home/tools --name redmine centos6-ssh
+
+ centos6-java
+
+
+jdk7
+wget http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.tar.gz 
+
+
+
+wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.47/bin/apache-tomcat-7.0.47.tar.gz
+
+docker run -d -p 33602:22 -p 33680:80 -p 33683:443 --name bugzilla centos6-ssh
+
+
+docker pull dklawren/docker-bugzilla
+
+ docker pull sameersbn/redmine
+
+
+http://npm.taobao.org/mirrors/python/2.7.8/
+更新 python 2.7
+http://www.phodal.com/blog/install-python27-on-centos/
+
+
+
